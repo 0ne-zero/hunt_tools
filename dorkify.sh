@@ -62,7 +62,9 @@ generate_dorks "File Leaks & Indexes" \
   "site:$domain ext:log | ext:bak | ext:old | ext:backup" \
   "site:$domain ext:env | ext:sql | ext:conf" \
   "site:$domain intitle:\"index of\" \"backup\"" \
-  "site:$domain \"Index of /\" +log"
+  "site:$domain \"Index of /\" +log" \
+  "site:$domain filetype:env" \
+  "site:$domain ext:log"
 
 generate_dorks "Secrets & Keys" \
   "site:$domain \"api_key\" OR \"secret_key\"" \
@@ -91,8 +93,7 @@ generate_dorks "Public Buckets & External Leaks" \
 
 generate_dorks "Miscellaneous & Interesting" \
   "site:$domain inurl:phpinfo" \
-  "site:$domain \"X-Powered-By:\"" \
-  "\"$domain\" ext:log | ext:conf | ext:bak"
+  "site:$domain \"X-Powered-By:\""
 
 echo -e "\n${GREEN}[✓] Done. ${open_flag:+Opened in browser.}${RESET}"
 
